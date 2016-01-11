@@ -18,6 +18,12 @@ state.monsterStatCurrent= 0;
 
 // When a monster stat is going to be shown, save the ID here
 state.monsterStatID;
+
+//Switching monster positions in inventory
+state.switchSelected = 0;
+state.monsterSwitch1;
+state.monsterSwitch2;
+
 state.run;
 
 // Player monster currently battling

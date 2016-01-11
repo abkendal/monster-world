@@ -156,6 +156,12 @@ Menu.prototype.renderBattleText = function(){
   }
 };
 
+// Swap positions in an array
+Array.prototype.swapItems = function(a, b){
+    this[a] = this.splice(b, 1, this[a])[0];
+    return this;
+}
+
 // ---------------- BATTLE ----------------
 
 var battleEvent = function(){
@@ -491,7 +497,15 @@ Player.prototype.handleInput = function(key) {
       break;
 
       case 'space':
-      
+        if (state.switchSelected === 0){
+          state.switchSelected = 1;
+          state.monsterSwitch1 = (this.y-menuInv.y) / menuInv.inter;
+        }
+        else if (state.switchSelected === 1){
+          state.switchSelected = 0;
+          state.monsterSwitch2 = (this.y-menuInv.y) / menuInv.inter;
+          monsterInventory.swapItems(state.monsterSwitch1, state.monsterSwitch2);
+        }
       break;
     }
   }
